@@ -1,27 +1,29 @@
 const r = require('raylib');
 
 function setup() {
-    const WIDTH = 600;
-    const HEIGHT = 600;
+    const WIDTH = 800;
+    const HEIGHT = 400;
 
     r.SetTraceLogLevel(r.LOG_NONE);
     r.InitWindow(WIDTH, HEIGHT, 'Specific Range');
     r.SetTargetFPS(50);
 
+    return {
+        WIDTH,
+        HEIGHT,
+        lines: createLines(),
+    };
+}
+function createLines() {
     const lines = [];
-    const minX = 150;
-    const maxX = 400;
+    const minX = 250;
+    const maxX = 500;
 
     for (let i = 0; i < 100; i++) {
         const x = minX + Math.random() * (maxX - minX);
         lines.push(x);
     }
-
-    return {
-        WIDTH,
-        HEIGHT,
-        lines,
-    };
+    return lines;
 }
 
 function draw(w) {
